@@ -28,11 +28,13 @@ async function fetchDataFromAPI(){
 
 async function getCurrency(currency){
     try{
-        const res = await fetch(`https://mindicador.cl/api/${currency}`);
+        const res = await fetch(`https://mindicador.cl/api/${currency}A`);
         const data = await res.json();
         return data
     }catch(e){
-        alert(e.message);
+        // Se escribe error en el DOM para el catch
+        let domValue = document.getElementById('money-result');
+        domValue.innerHTML= `Algo salió mal! Error: ${e.message}`;
     }
 }
 
@@ -73,7 +75,9 @@ async function clpValueToCurrency(){
         console.log(result)
         
     } catch(e){
-        alert(e.message)
+        // Se escribe error en el DOM para el catch
+        let domValue = document.getElementById('money-result');
+        domValue.innerHTML= `Algo salió mal! Error: ${e.message}`;
     }
 // Obtener la opción seleccionada
 }
