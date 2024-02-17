@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./assets/css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
+
 <body>
     <div class="container">
         <div class="title">
@@ -25,7 +28,12 @@
             <button class="money-button" onclick="clpValueToCurrency()">Buscar</button>
             <p id="money-result" class="money-result">...</p>
         </div>
+        <div class="grafica" style="width: 80vh; height: 100vh;">
+            <canvas id="myChart"></canvas>
+        </div>
+
     </div>
     <script src="./assets/js/script.js"></script>
 </body>
+
 </html>
