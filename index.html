@@ -18,7 +18,7 @@
             <p class="clp-title">Pesos CLP</p>
             <input type="text" id="clp-value" class="clp-value" placeholder="Ingrese el monto en CLP">
             <p class="money-title">Moneda a convertir</p>
-            <select name="money-select" id="selector">
+            <select name="money-select" id="selector" class="money-select">
                 <!-- Se definen manualmente para luego ir directamente a la data para cada endpoint -->
                 <option value="uf" selected>Unidad de fomento (UF)</option>
                 <option value="euro">Euro</option>
@@ -28,7 +28,7 @@
             <button class="money-button" onclick="clpValueToCurrency()">Buscar</button>
             <p id="money-result" class="money-result">...</p>
         </div>
-        <div class="grafica" style="width: 80vh; height: 100vh;">
+        <div class="grafica">
             <canvas id="myChart"></canvas>
         </div>
 

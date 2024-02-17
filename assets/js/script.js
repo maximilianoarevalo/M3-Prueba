@@ -1,31 +1,3 @@
-async function fetchDataFromAPI() {
-  try {
-    const res = await fetch("https://mindicador.cl/api/");
-    const data = await res.json();
-    //console.log(data);
-    return data;
-  } catch (e) {
-    alert(e.message);
-  }
-}
-
-// async function fetchIndicatorsFromAPI(){
-//     let indicatorsObject = [];
-//     try{
-//         const res = await fetch("https://mindicador.cl/api/").then(function(response){
-//             let indicator = {};
-//             indicator.nombre = response.uf.nombre;
-//             indicator.valor = response.uf.valor;
-//             indicatorsObject.push(indicator)
-//         });
-//     }catch(e){
-//         alert(e.message);
-//     }
-//     console.log(indicatorsObject)
-// }
-
-// fetchIndicatorsFromAPI();
-
 async function getCurrency(currency) {
   try {
     const res = await fetch(`https://mindicador.cl/api/${currency}`);
@@ -41,9 +13,12 @@ async function getCurrency(currency) {
 async function clpValueToCurrency() {
   try {
     let clpValue = document.getElementById("clp-value").value;
+    if(clpValue == null || clpValue == undefined || isNaN(parseInt(clpValue))){
+      alert('Por favor, ingrese un número válido.')
+      return
+    }
     console.log(clpValue);
-    let selectedCurrency =
-      document.getElementById("selector").options[selector.selectedIndex].value;
+    let selectedCurrency = document.getElementById("selector").options[selector.selectedIndex].value;
     console.log(selectedCurrency);
     let currencyArray = await getCurrency(selectedCurrency);
     console.log(currencyArray.serie[0]);
