@@ -47,24 +47,8 @@ async function clpValueToCurrency(){
         let actualValueOfCurrency = currencyArray.serie[0].valor;
         console.log(selectedCurrency)
         
-        // Switch para determinar que hacer
-        switch(selectedCurrency){
-            case 'uf':
-                result = (parseInt(clpValue)/actualValueOfCurrency).toFixed(4);
-                break;
-            case 'bitcoin':
-                result = (parseInt(clpValue)/actualValueOfCurrency).toFixed(4);
-                break;
-            case 'euro':
-                result = (actualValueOfCurrency * parseInt(clpValue)).toFixed(4);
-                break;
-            case 'dolar':
-                result = (actualValueOfCurrency * parseInt(clpValue)).toFixed(4);
-                break;
-            case 'dolar_intercambio':
-                result = (actualValueOfCurrency * parseInt(clpValue)).toFixed(4);
-                break;
-        }
+        // Se calcula el cambio
+        result = (parseInt(clpValue)/actualValueOfCurrency).toFixed(4);
         
         // Se revisa el valor de result, si los decimales son solo 0s se eliminan
         let decimals = result.toString().split('.')
@@ -75,7 +59,16 @@ async function clpValueToCurrency(){
 
         // Se coloca el resultado en el DOM
         let domValue = document.getElementById('money-result');
-        domValue.innerHTML= result;
+    
+
+        // Se coloca el signo correcto para cada tipo de cambio
+        if(selectedCurrency == 'uf'){
+            domValue.innerHTML= `Resultado: ${result} UF`;
+        }else if(selectedCurrency == 'euro'){
+            domValue.innerHTML= `Resultado: € ${result} `;
+        }else{
+            domValue.innerHTML= `Resultado: $ ${result} `;
+        }
 
         console.log(result)
         
