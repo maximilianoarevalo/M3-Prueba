@@ -33,7 +33,6 @@ async function clpValueToCurrency() {
 
     // Se revisa el valor de result, si los decimales son solo 0s se eliminan (para que no quede el valor X.000)
     let decimals = result.toString().split(".");
-    console.log(decimals);
     if (parseInt(decimals[1]) == 0) {
       result = decimals[0];
     }
